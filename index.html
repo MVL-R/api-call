@@ -12,6 +12,17 @@
         body {
             font-family: 'Oswald', sans-serif;
         }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
@@ -27,6 +38,6 @@
         <button id="next" class="w-full py-2 rounded-lg text-white bg-[#3981BE] hover:bg-[#6BBAC1] transition-colors duration-300 cursor-pointer">Next</button>
       </footer>
     
-      <script src="script.js"></script>
+      <script src="MHWscript.js"></script>
 </body>
 </html>
