@@ -15,13 +15,14 @@
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             z-index: -1;
+            pointer-events: none
         }
     </style>
 </head>
@@ -34,7 +35,7 @@
     </header>
     <body class="flex flex-col min-h-screen bg-cover bg-center" style="background-image: url('https://media.sketchfab.com/models/b0b8d3b127404b0bbce254ddf865d6cf/thumbnails/06ccf6c3af6d4721a6aa22aef7a0f1fb/5d47e61f3202421fb45bda485fca90fd.jpeg')"></body>
     <div class="container mx-auto p-5">
-        <div id="monster-display" class="my-5 mx-auto bg-gray-900 p-4 rounded-lg shadow-lg max-w-full w-auto"></div>
+        <div id="monster-display" class="my-5 mx-auto bg-gray-800 p-4 rounded-lg shadow-lg max-w-full w-auto"></div>
       </div>
 
       <footer class="flex justify-center space-x-4 mt-5">

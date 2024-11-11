@@ -1,5 +1,4 @@
 const apiUrl = 'https://mhw-db.com/monsters';
-let currentPage = 1;
 let monsterIds = [];
 
 async function loadMonsterIds() {
@@ -11,7 +10,7 @@ async function loadMonsterIds() {
 
         const monsters = await response.json();
         monsterIds = monsters.map(monster => monster.id);
-        fetchMonster();
+        fetchRandomMonster();
     } catch (error) {
         console.error('Error fetching monster IDs:', error);
         displayError('Failed to load monster data. Please try again later.');
@@ -19,22 +18,18 @@ async function loadMonsterIds() {
 }
 
 document.getElementById('next').addEventListener('click', () => {
-    if (currentPage < monsterIds.length) {
-        currentPage++;
-        fetchMonster();
-    }
+    fetchRandomMonster();
 });
 
 document.getElementById('prev').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        fetchMonster();
-    }
+    fetchRandomMonster();
 });
 
-async function fetchMonster() {
+async function fetchRandomMonster() {
     try {
-        const monsterId = monsterIds[currentPage - 1];
+        const randomIndex = Math.floor(Math.random() * monsterIds.length);
+        const monsterId = monsterIds[randomIndex];
+        
         const response = await fetch(`${apiUrl}/${monsterId}`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -43,8 +38,6 @@ async function fetchMonster() {
         const monster = await response.json();
         displayMonster(monster);
 
-        document.getElementById('prev').disabled = currentPage === 1;
-        document.getElementById('next').disabled = currentPage === monsterIds.length;
     } catch (error) {
         console.error('Error fetching data:', error);
         displayError('Failed to load monster data. Please try again later.');
