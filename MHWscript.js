@@ -68,7 +68,7 @@ function displayMonster(monster) {
         '<li>No related items available</li>';
 
     display.innerHTML = `
-        <div class="bg-gray-900 rounded-lg shadow-md p-6">
+        <div class="bg-gray-950 rounded-lg shadow-md p-6">
             <div class="flex flex-col">
                 <h2 class="text-4xl font-bold mb-4 text-white">${monster.name}</h2>
                 <p class="text-white mb-6">${monster.description || 'Description not available.'}</p>
